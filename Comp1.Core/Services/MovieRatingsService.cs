@@ -17,7 +17,7 @@ namespace Comp1.Core.Services
         public int GetNumberOfReviewsFromReviewer(int reviewer)
         {
             int count = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (rating.Reviewer == reviewer)
                 {
@@ -32,7 +32,7 @@ namespace Comp1.Core.Services
         {
             int sum = 0;
             int count = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (rating.Reviewer == reviewer)
                 {
@@ -51,7 +51,7 @@ namespace Comp1.Core.Services
         public int GetNumberOfRatesByReviewer(int reviewer, int rate)
         {
             int count = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (rating.Reviewer == reviewer && rating.Grade == rate)
                 {
@@ -64,7 +64,7 @@ namespace Comp1.Core.Services
         public int GetNumberOfReviews(int movie)
         {
             int count = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (rating.Movie == movie)
                 {
@@ -79,7 +79,7 @@ namespace Comp1.Core.Services
         {
             int sum = 0;
             int count = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (rating.Movie == movie)
                 {
@@ -98,7 +98,7 @@ namespace Comp1.Core.Services
         public int GetNumberOfRates(int movie, int rate)
         {
             int count = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (rating.Movie == movie && rating.Grade == rate)
                 {
@@ -113,7 +113,7 @@ namespace Comp1.Core.Services
             SortedDictionary<int, int> movie5 = new SortedDictionary<int, int>();
             int max5 = 0;
 
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 int movie = rating.Movie;
                 if (rating.Grade == 5)
@@ -149,7 +149,7 @@ namespace Comp1.Core.Services
         {
             var reviewerCounts = new SortedDictionary<int, int>();
             int maxReviews = 0;
-            foreach (var rating in RatingsRepo.Ratings)
+            foreach (var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (!reviewerCounts.ContainsKey(rating.Reviewer))
                 {
@@ -183,7 +183,7 @@ namespace Comp1.Core.Services
             var movieScoreSum = new Dictionary<int, int>();
             var movieScoreCount = new Dictionary<int, int>();
             
-            foreach(var rating in RatingsRepo.Ratings)
+            foreach(var rating in RatingsRepo.GetAllMovieRatings())
             {
                 if (!movieScoreSum.ContainsKey(rating.Movie))
                 {
@@ -224,7 +224,7 @@ namespace Comp1.Core.Services
 
         public List<int> GetTopMoviesByReviewer(int reviewer)
         {
-            MovieRating[] ratings = RatingsRepo.Ratings;
+            MovieRating[] ratings = RatingsRepo.GetAllMovieRatings();
             int index = 0;
 
             var reviewerRatings = new List<MovieRating>();
@@ -257,7 +257,7 @@ namespace Comp1.Core.Services
 
         public List<int> GetReviewersByMovie(int movie)
         {
-            var ratings = RatingsRepo.Ratings;
+            var ratings = RatingsRepo.GetAllMovieRatings();
             int index = 0;
 
             var movieRatings = new List<MovieRating>();

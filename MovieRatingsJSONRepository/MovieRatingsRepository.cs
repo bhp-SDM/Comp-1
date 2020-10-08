@@ -3,25 +3,23 @@ using Comp1.Core.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Dynamic;
 using System.IO;
 
 namespace MovieRatingsJSONRepository
 {
     public class MovieRatingsRepository : IMovieRatingsRepository
-
     {
-        public MovieRating[] Ratings { get; private set; }
+        private readonly MovieRating[] _ratings;
 
         public MovieRatingsRepository(string JsonFileName)
         {
-            Stopwatch sw = Stopwatch.StartNew();
             //Ratings = JsonConvert.DeserializeObject<MovieRating[]>(File.ReadAllText(JsonFileName));
-            Ratings = ReadAllRatings(JsonFileName);
-            sw.Stop();
-            Console.WriteLine("Time = {0:f4} seconds", sw.ElapsedMilliseconds / 1000d);
+            _ratings = ReadAllRatings(JsonFileName);
+         }
+
+        public MovieRating[] GetAllMovieRatings()
+        {
+            return _ratings;
         }
 
         private MovieRating[] ReadAllRatings(string jsonFileName)
@@ -59,5 +57,6 @@ namespace MovieRatingsJSONRepository
 
             return new MovieRating(reviewer, movie, grade, date);
         }
+
     }
 }

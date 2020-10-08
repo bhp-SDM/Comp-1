@@ -18,7 +18,7 @@ namespace XUnitTestProject
         public MovieRatingsServiceTest()
         {
             repoMock = new Mock<IMovieRatingsRepository>();
-            repoMock.Setup(repo => repo.Ratings).Returns(() => ratings);
+            repoMock.Setup(repo => repo.GetAllMovieRatings()).Returns(() => ratings);
         }
 
         [Fact]
@@ -58,6 +58,7 @@ namespace XUnitTestProject
             var result = mrs.GetNumberOfReviewsFromReviewer(movie);
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         // 2. On input N, what is the average rate that reviewer N had given?
@@ -78,6 +79,7 @@ namespace XUnitTestProject
             var result = mrs.GetAverageRateFromReviewer(reviewer);
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         [Fact]
@@ -95,6 +97,7 @@ namespace XUnitTestProject
             Action ac = () => mrs.GetAverageRateFromReviewer(reviewer);
 
             ac.Should().Throw<ArgumentException>().WithMessage($"Reviewer:{reviewer} has no reviews");
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
 
@@ -117,6 +120,7 @@ namespace XUnitTestProject
             var result = mrs.GetNumberOfRatesByReviewer(reviewer, rate);
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  4. On input N, how many have reviewed movie N?
@@ -138,6 +142,7 @@ namespace XUnitTestProject
             var result = mrs.GetNumberOfReviews(movie);
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  5. On input N, what is the average rate the movie N had received? 
@@ -157,6 +162,7 @@ namespace XUnitTestProject
             var result = mrs.GetAverageRateOfMovie(movie);
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         [Fact]
@@ -174,6 +180,7 @@ namespace XUnitTestProject
             Action ac = () => mrs.GetAverageRateOfMovie(movie);
 
             ac.Should().Throw<ArgumentException>().WithMessage($"Movie:{movie} has no reviews");
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  6. On input N and R, how many times had movie N received rate R?
@@ -195,6 +202,7 @@ namespace XUnitTestProject
             var result = mrs.GetNumberOfRates(movie, rate);
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
 
@@ -220,6 +228,7 @@ namespace XUnitTestProject
             var result = mrs.GetMoviesWithHighestNumberOfTopRates();
 
             Assert.Equal(expected, result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  8. What reviewer(s) had done most reviews?
@@ -243,7 +252,7 @@ namespace XUnitTestProject
             var result = mrs.GetMostProductiveReviewers();
 
             Assert.Equal(expected, result);
-
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  9. On input N, what is top N of movies? 
@@ -271,6 +280,7 @@ namespace XUnitTestProject
             var result = mrs.GetTopRatedMovies(n);
 
             Assert.Equal(expected.ToList(), result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  10. On input N, what are the movies that reviewer N has reviewed? 
@@ -302,6 +312,7 @@ namespace XUnitTestProject
             var result = mrs.GetTopMoviesByReviewer(reviewer);
 
             Assert.Equal(expected[expectedIndex], result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
 
         //  11. On input N, who are the reviewers that have reviewed movie N? 
@@ -333,6 +344,7 @@ namespace XUnitTestProject
             var result = mrs.GetReviewersByMovie(movie);
 
             Assert.Equal(expected[expectedIndex], result);
+            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
         }
     }
 }

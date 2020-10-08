@@ -30,7 +30,7 @@ namespace MSUnitTestProject1
 
         private static int GetMovieMostReviews(MovieRatingsRepository repo)
         {
-            return repo.Ratings
+            return repo.GetAllMovieRatings()
                 .GroupBy(r => r.Movie)
                 .Select(grp => new
                 {
@@ -44,7 +44,7 @@ namespace MSUnitTestProject1
 
         private static int GetReviewerMostReviews(MovieRatingsRepository repo)
         {
-            return repo.Ratings
+            return repo.GetAllMovieRatings()
                 .GroupBy(r => r.Reviewer)
                 .Select(grp => new
                 {

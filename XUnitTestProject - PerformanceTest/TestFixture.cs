@@ -17,7 +17,7 @@ namespace XUnitTestProject___PerformanceTest
         {
             Repository = new MovieRatingsRepository(JSÒN_FILE_NAME);
 
-             ReviewerMostReviews = Repository.Ratings
+             ReviewerMostReviews = Repository.GetAllMovieRatings()
                 .GroupBy(r => r.Reviewer)
                 .Select(grp => new
                 {
@@ -28,7 +28,7 @@ namespace XUnitTestProject___PerformanceTest
                 .Select(grp => grp.reviewer)
                 .FirstOrDefault();
 
-            MovieMostReviews = Repository.Ratings
+            MovieMostReviews = Repository.GetAllMovieRatings()
                 .GroupBy(r => r.Movie)
                 .Select(grp => new
                 {
