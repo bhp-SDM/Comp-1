@@ -7,4 +7,3 @@ script:
   - dotnet restore
   - dotnet build
   - dotnet test MSUnitTestProject MSUnitTestProject1 XUnitTestProject
-
