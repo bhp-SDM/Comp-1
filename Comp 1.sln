@@ -19,7 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject - Performa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReaderConsole", "JsonReaderConsole\JsonReaderConsole.csproj", "{8BB01968-2C2C-47C9-A772-9C44F4CC4BB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUnitTestProject1", "MSUnitTestProject1\MSUnitTestProject1.csproj", "{A7EFA105-613E-4D1B-8750-49D11329AB19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSUnitTestProject1", "MSUnitTestProject1\MSUnitTestProject1.csproj", "{A7EFA105-613E-4D1B-8750-49D11329AB19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91EF032C-46A8-4188-B714-0490F22C8391}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

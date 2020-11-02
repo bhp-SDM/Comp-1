@@ -1,0 +1,11 @@
+language: Csharp
+mono: none
+solution: "Comp 1.sln"
+
+script:
+  - dotnet restore
+  - dotnet build
+  - dotnet test
+
+
+
