@@ -6,7 +6,4 @@ solution: Comp 1.sln
 script:
   - dotnet restore
   - dotnet build
-  - dotnet test
-
-
-
+  - dotnet test MSUnitTestProject MSUnitTestProject1 XUnitTestProject
