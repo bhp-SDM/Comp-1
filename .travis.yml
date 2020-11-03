@@ -17,4 +17,6 @@ before_script:
 script:
   - dotnet restore
   - dotnet build
-  - dotnet test MSUnitTestProject MSUnitTestProject1 XUnitTestProject
+  - dotnet test MSUnitTestProject
+  - dotnet test MSUnitTestProject1
+  - dotnet test XUnitTestProject
