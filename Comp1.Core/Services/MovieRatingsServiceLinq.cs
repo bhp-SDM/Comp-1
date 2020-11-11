@@ -15,19 +15,19 @@ namespace Comp1.Core.Services
             Repository = repo ?? throw new ArgumentException("Missing MovieRatings repository");
         }
 
-        //public double GetAverageRateFromReviewer(int reviewer)
-        //{
-        //    try
-        //    {
-        //        return Repository.GetAllMovieRatings()
-        //            .Where<MovieRating>(rating => rating.Reviewer == reviewer)
-        //            .Average<MovieRating>(rating => rating.Grade);
-        //    }
-        //    catch
-        //    {
-        //        throw new ArgumentException($"Reviewer:{reviewer} has no reviews");
-        //    }
-        //}
+        public double GetAverageRateFromReviewer(int reviewer)
+        {
+            try
+            {
+                return Repository.GetAllMovieRatings()
+                    .Where<MovieRating>(rating => rating.Reviewer == reviewer)
+                    .Average<MovieRating>(rating => rating.Grade);
+            }
+            catch
+            {
+                throw new ArgumentException($"Reviewer:{reviewer} has no reviews");
+            }
+        }
 
         public double GetAverageRateOfMovie(int movie)
         {
