@@ -62,42 +62,42 @@ namespace XUnitTestProject
 
         // 2. On input N, what is the average rate that reviewer N had given?
 
-        [Theory]
-        [InlineData(2, 3)]
-        [InlineData(3, 3.5)]
-        public void GetAverageRateFromReviewerWithReviews(int reviewer, double expected)
-        {
-            ratings = new MovieRating[]
-            {
-                new MovieRating(2, 1, 3, DateTime.Now),
-                new MovieRating(3, 1, 3, DateTime.Now),
-                new MovieRating(3, 2, 4, DateTime.Now)
-            };
-            IMovieRatingsService mrs = new MovieRatingsServiceLinq(repoMock.Object);
+        //[Theory]
+        //[InlineData(2, 3)]
+        //[InlineData(3, 3.5)]
+        //public void GetAverageRateFromReviewerWithReviews(int reviewer, double expected)
+        //{
+        //    ratings = new MovieRating[]
+        //    {
+        //        new MovieRating(2, 1, 3, DateTime.Now),
+        //        new MovieRating(3, 1, 3, DateTime.Now),
+        //        new MovieRating(3, 2, 4, DateTime.Now)
+        //    };
+        //    IMovieRatingsService mrs = new MovieRatingsServiceLinq(repoMock.Object);
 
-            var result = mrs.GetAverageRateFromReviewer(reviewer);
+        //    var result = mrs.GetAverageRateFromReviewer(reviewer);
 
-            Assert.Equal(expected, result);
-            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
-        }
+        //    Assert.Equal(expected, result);
+        //    repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
+        //}
 
-        [Fact]
-        public void GetAverageRatingFromReviewerWithNoReviewsExpectArgumentException()
-        {
-            int reviewer = 2;
+        //[Fact]
+        //public void GetAverageRatingFromReviewerWithNoReviewsExpectArgumentException()
+        //{
+        //    int reviewer = 2;
 
-            ratings = new MovieRating[]
-            {
-                new MovieRating(3, 1, 3, DateTime.Now),
-                new MovieRating(3, 2, 4, DateTime.Now)
-            };
-            IMovieRatingsService mrs = new MovieRatingsServiceLinq(repoMock.Object);
+        //    ratings = new MovieRating[]
+        //    {
+        //        new MovieRating(3, 1, 3, DateTime.Now),
+        //        new MovieRating(3, 2, 4, DateTime.Now)
+        //    };
+        //    IMovieRatingsService mrs = new MovieRatingsServiceLinq(repoMock.Object);
 
-            Action ac = () => mrs.GetAverageRateFromReviewer(reviewer);
+        //    Action ac = () => mrs.GetAverageRateFromReviewer(reviewer);
 
-            ac.Should().Throw<ArgumentException>().WithMessage($"Reviewer:{reviewer} has no reviews");
-            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
-        }
+        //    ac.Should().Throw<ArgumentException>().WithMessage($"Reviewer:{reviewer} has no reviews");
+        //    repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
+        //}
 
 
         // 3. On input N and R, how many times has reviewer N given rate R?
