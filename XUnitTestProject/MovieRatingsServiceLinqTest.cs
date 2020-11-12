@@ -40,25 +40,25 @@ namespace XUnitTestProject
 
         // 1.  On input N, what are the number of reviews from reviewer N?
 
-        [Theory]
-        [InlineData(1, 0)]
-        [InlineData(2, 1)]
-        [InlineData(3, 2)]
-        public void GetNumberOfReviewsFromReviewer(int movie, int expected)
-        {
-            ratings = new MovieRating[]
-            {
-                new MovieRating(2, 1, 3, DateTime.Now),
-                new MovieRating(3, 1, 3, DateTime.Now),
-                new MovieRating(3, 2, 4, DateTime.Now)
-            };
-            IMovieRatingsService mrs = new MovieRatingsServiceLinq(repoMock.Object);
+        //[Theory]
+        //[InlineData(1, 0)]
+        //[InlineData(2, 1)]
+        //[InlineData(3, 2)]
+        //public void GetNumberOfReviewsFromReviewer(int movie, int expected)
+        //{
+        //    ratings = new MovieRating[]
+        //    {
+        //        new MovieRating(2, 1, 3, DateTime.Now),
+        //        new MovieRating(3, 1, 3, DateTime.Now),
+        //        new MovieRating(3, 2, 4, DateTime.Now)
+        //    };
+        //    IMovieRatingsService mrs = new MovieRatingsServiceLinq(repoMock.Object);
 
-            var result = mrs.GetNumberOfReviewsFromReviewer(movie);
+        //    var result = mrs.GetNumberOfReviewsFromReviewer(movie);
 
-            Assert.Equal(expected, result);
-            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
-        }
+        //    Assert.Equal(expected, result);
+        //    repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
+        //}
 
         // 2. On input N, what is the average rate that reviewer N had given?
 

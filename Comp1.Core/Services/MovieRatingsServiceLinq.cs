@@ -101,12 +101,12 @@ namespace Comp1.Core.Services
                 .Count();
         }
 
-        public int GetNumberOfReviewsFromReviewer(int reviewer)
-        {
-            return Repository.GetAllMovieRatings()
-                .Where(rating => rating.Reviewer == reviewer)
-                .Count();
-        }
+        //public int GetNumberOfReviewsFromReviewer(int reviewer)
+        //{
+        //    return Repository.GetAllMovieRatings()
+        //        .Where(rating => rating.Reviewer == reviewer)
+        //        .Count();
+        //}
 
         public List<int> GetReviewersByMovie(int movie)
         {
