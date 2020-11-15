@@ -2,15 +2,14 @@ name: .NET Core
 
 on:
   push:
-    paths: [/**]
     
   pull_request:
     branches: [ master, develop ]
-
+    
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
